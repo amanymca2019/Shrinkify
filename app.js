@@ -4,7 +4,7 @@ const createHttpError = require('http-errors')
 const mongoose = require('mongoose')
 const path = require('path')
 const ShortUrl = require('./models/url.model')
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT;
 
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
@@ -67,6 +67,6 @@ app.use((err, req, res, next) => {
   res.render('index', { error: err.message })
 })
 
-app.listen(PORT, () => {
-  console.log(`🌏Listening on port ${PORT}`)
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
