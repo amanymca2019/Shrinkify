@@ -4,7 +4,7 @@ const createHttpError = require('http-errors')
 const mongoose = require('mongoose')
 const path = require('path')
 const ShortUrl = require('./models/url.model')
-const PORT = process.env.PORT;
+const PORT = process.env.PORT|| '3030';
 
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }))
 
 const connectDB = require('./config/db');
 connectDB();
-
+app.set("port",PORT);
 app.set('view engine', 'ejs')
 
 app.get('/', async (req, res, next) => {
