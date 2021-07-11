@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: false }))
 
 const connectDB = require('./config/db');
 connectDB();
-app.set("port",PORT);
 app.set('view engine', 'ejs')
 
 app.get('/', async (req, res, next) => {
